@@ -43,13 +43,13 @@ label = np.array(pred)
 ids_df = pd.DataFrame(ids, columns=['id'])
 
 ''' Use this is there is one predicted class'''
-label_df = pd.DataFrame(label, columns=['label'])
-df = pd.concat([ids_df, label_df], axis=1)
+#label_df = pd.DataFrame(label, columns=['label'])
+#df = pd.concat([ids_df, label_df], axis=1)
 
 ''' Use this if there are two predicted classes '''
-#label_df = pd.DataFrame(label, columns=['cat', 'label'])
-#label_df = label_df.div(label_df.sum(axis=1), axis=0)
-#df = pd.concat([ids_df, label_df.drop('cat', axis=1)], axis=1)
+label_df = pd.DataFrame(label, columns=['cat', 'label'])
+label_df = label_df.div(label_df.sum(axis=1), axis=0)
+df = pd.concat([ids_df, label_df.drop('cat', axis=1)], axis=1)
 
 df.id = df.id.apply(lambda x: int(x.split('test/')[1].split('.jpg')[0]))
 df.to_csv('VGG16.csv', index=False)
