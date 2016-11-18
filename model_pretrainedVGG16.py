@@ -42,7 +42,7 @@ train_dir = '/home/matt/kaggle/c_vs_d/train_1'
 val_dir = '/home/matt/kaggle/c_vs_d/validation_1'
 
 # Start with an VGG16 model, not including the final softmax layer.
-base_model = VGG16(weights='imagenet', include_top=False)
+base_model = VGG16(weights='imagenet', include_top=True)
 print 'Loaded VGG16 model'
 
 # Turn off training on first few convolution layers
